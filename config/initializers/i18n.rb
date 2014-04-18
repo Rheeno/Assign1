@@ -6,16 +6,10 @@
 # We make no guarantees that this code is fit for any purpose. 
 # Visit http://www.pragmaticprogrammer.com/titles/rails4 for more book information.
 #---
-class User < ActiveRecord::Base
-  validates :name, presence: true, uniqueness: true
- # has_secure_password
+#encoding: utf-8
+I18n.default_locale = :en
 
-  after_destroy :ensure_an_admin_remains
-
-  private
-    def ensure_an_admin_remains
-      if User.count.zero?
-        raise "Can't delete last user"
-      end
-    end     
-end
+LANGUAGES = [
+  ['English',                  'en'],
+  ["Espa&ntilde;ol".html_safe, 'es']
+]
